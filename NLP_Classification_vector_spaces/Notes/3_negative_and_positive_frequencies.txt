@@ -1,0 +1,76 @@
+
+Negative and Positive Frequencies
+---------------------------------
+
+We saw earlier that first building the vocab and then assigning
+1/0 depending on presence/absence of the vocab word in the text
+to form a vector representation - aka sparse representation -
+has it's demerits.
+
+Let's consider another way,
+
+	Positive and Negative frequencies approach
+
+	1. Given a corpus of text, we can construct the vocab from it.
+	
+	2. Now consider a set of positive tweets, make a frequency
+	   table for each vocab word and count the number of times
+	   a word appears in these positive texts.
+
+	3. Do the same for negative texts.
+
+
+	In terms of coding,
+
+	When going through the text, pick a word, check the class
+	of text i.e. is the text is positive or negative, increment
+	the record of that word in the map of that class.
+
+	Now,
+
+	We will have frequency dictionaries : PosFreq and NegFreq.
+
+	
+We propose different way of feature extraction:
+
+	Earlier, each word in vocab was a feature, and 
+	the presence or absence of word in the text meant a 1 or 0 
+	value of that feature in the feature.
+
+	But since that scheme of forming a vector was giving us 
+	very large (and sparsely populated) vectors we will follow 
+	a new approach for forming feature vectors.
+
+	Suppose word "w" occurs in the text:
+
+		feature 1 - frequency of w in positive class tweets 	
+			    ( How many times does word "w" occur in 
+			      texts in training corpus which are 
+			      classified as positive )
+										
+		feature 2 - frequency of w in negative class tweets 	
+
+  	
+	Slight update:
+
+		Instead of just one word,
+
+		feature 1 :- 
+				for all words in the text,
+			
+			    		temp_freq = frequency of w in positive class tweets
+					sum_pos = sum_pos + temp_freq
+				
+				end loop
+
+				feature 1 = sum_pos
+
+		feature 2 :- 
+				for all words in the text,
+                                
+                                        temp_freq = frequency of w in negative class tweets
+                                        sum_neg = sum_neg + temp_freq
+                                
+                                end loop
+                                
+                                feature 2 = sum_neg

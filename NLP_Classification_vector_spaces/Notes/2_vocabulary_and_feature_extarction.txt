@@ -1,0 +1,47 @@
+
+
+Vocabulary & Feature Extraction
+-------------------------------
+
+Central question :
+	
+	How can we represent text as vector ?
+
+
+One Approach : 
+
+	Build a vocabulary of words 
+
+	When building a vector for a particular text,
+	assign 1 for those vocab words that are there in the text
+	else assign 0.
+
+	e.g.
+
+	Consider text : 'I love NLP'
+
+	Vocab = ['I', 'love', 'NLP', 'Machine', 'Learning']
+		  |	|	|	|	    |
+		  v	v	v	v	    v
+	vector= ( 1,	1,	1,	0,	    0)
+
+	Thus we can represent "I love NLP" with the vector
+	(1,1,1,0,0) given the above vocab.
+
+	This representation is called Sparse representation.
+	(due to small relative number of non-zero values)
+
+	Note: Vocab is generally very large.
+
+	Moreover, each word in the vocab would correspond to a 
+	feature. If the size of vocab is 'n', the size of vector
+	would be 'n'. Now if 'n' if very huge, the logistic regression 
+	function would have to learn 'n'+1 coefficients to classify
+	the text as positive or negative (sentiment analysis).
+
+	( n = |V| )
+	( n is size of vocab )
+
+	Training such a model would take an excessive amount of
+	time to train and to make predictions.
+	
