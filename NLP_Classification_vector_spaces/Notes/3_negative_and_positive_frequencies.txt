@@ -35,7 +35,7 @@ We propose different way of feature extraction:
 
 	Earlier, each word in vocab was a feature, and 
 	the presence or absence of word in the text meant a 1 or 0 
-	value of that feature in the feature.
+	value of that feature in the feature vector.
 
 	But since that scheme of forming a vector was giving us 
 	very large (and sparsely populated) vectors we will follow 
